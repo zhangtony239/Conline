@@ -44,8 +44,6 @@ volumes:
   cline:
 ```
 
-> GHCR requires lowercase image names — use `ghcr.io/<owner>/conline`, not the repository's original casing.
-
 ### Build it yourself
 
 ```bash
