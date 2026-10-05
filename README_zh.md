@@ -44,8 +44,6 @@ volumes:
   cline:
 ```
 
-> GHCR 要求镜像名全小写 —— 请写成 `ghcr.io/<owner>/conline`，不要保留仓库名里的大写字母。
-
 ### 自行构建
 
 ```bash
