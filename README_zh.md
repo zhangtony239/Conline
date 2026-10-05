@@ -2,7 +2,7 @@
 
 [English](README.md) | 简体中文
 
-**Conline** = **C**line + term**line** —— [Cline](https://cline.bot) CLI 的 [Wetty](https://github.com/butlerx/wetty) 封装。只要有浏览器，随时随地都能用上 Cline，无需本地安装，无需终端。
+**Conline** = **C**line + **online** —— [Cline](https://cline.bot) CLI 的 [Wetty](https://github.com/butlerx/wetty) 封装。只要有浏览器，随时随地都能用上 Cline。
 
 ## 为什么做这个
 
