@@ -2,7 +2,7 @@
 
 English | [简体中文](README_zh.md)
 
-**Conline** = **C**line + term**line** — a [Wetty](https://github.com/butlerx/wetty) wrapper around the [Cline](https://cline.bot) CLI. Open any browser, and Cline is right there — no local install, no terminal required.
+**Conline** = **C**line + **online** — a [Wetty](https://github.com/butlerx/wetty) wrapper around the [Cline](https://cline.bot) CLI. Open any browser, and Cline is right there.
 
 ## Why
 
