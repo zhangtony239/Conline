@@ -32,7 +32,7 @@ docker compose up -d
 ```yaml
 services:
   cline-cli:
-    image: ghcr.io/<owner>/conline:latest
+    image: ghcr.io/zhangtony239/conline:latest
     container_name: cline-cli
     restart: unless-stopped
     ports:
