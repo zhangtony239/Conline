@@ -1,0 +1,27 @@
+FROM node:20-slim
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        bash \
+        openssh-client \
+        login \
+        python3 \
+        make \
+        g++ \
+        git \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+ENV PYTHON=/usr/bin/python3
+ENV SHELL=/bin/bash
+
+RUN npm install -g cline wetty
+
+EXPOSE 3000
+
+CMD ["wetty", \
+     "--host", "0.0.0.0", \
+     "--port", "3000", \
+     "--command", "cline"]

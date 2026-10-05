@@ -1,0 +1,12 @@
+services:
+  cline-cli:
+    image: cline-cli:latest
+    container_name: cline-cli
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:13000:3000"
+    volumes:
+      - cline:/workspace
+
+volumes:
+  cline:
