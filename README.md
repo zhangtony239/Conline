@@ -16,7 +16,7 @@ English | [简体中文](README_zh.md)
 ## Quick Start
 
 ```bash
-git clone <this-repo>
+git clone https://github.com/zhangtony239/Conline.git
 cd Conline
 docker compose up -d
 ```
