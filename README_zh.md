@@ -16,7 +16,7 @@
 ## 快速开始
 
 ```bash
-git clone <本仓库>
+git clone https://github.com/zhangtony239/Conline.git
 cd Conline
 docker compose up -d
 ```
