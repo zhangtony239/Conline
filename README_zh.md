@@ -32,16 +32,18 @@ docker compose up -d
 ```yaml
 services:
   cline-cli:
-    image: ghcr.io/zhangtony239/conline:latest
+    image: cline-cli:latest
     container_name: cline-cli
     restart: unless-stopped
     ports:
       - "127.0.0.1:13000:3000"
     volumes:
-      - cline:/workspace
+      - ./workspace:/workspace
+      - cline-data:/root/.cline/data
 
 volumes:
-  cline:
+  cline-data:
+
 ```
 
 ### 自行构建
@@ -50,16 +52,6 @@ volumes:
 docker build -t cline-cli:latest .
 docker compose up -d
 ```
-
-## 配置
-
-| 项目 | 默认值 | 说明 |
-| --- | --- | --- |
-| HTTP 端口 | `127.0.0.1:13000` → `3000` | 修改 [`compose.yaml`](compose.yaml) 中 `ports` 的左半部分 |
-| 工作区 | 命名卷 `cline` 挂载到 `/workspace` | 项目文件保存在这里 |
-| 启动命令 | `cline` | 由 [`Dockerfile`](Dockerfile) 的 `CMD` 指定 |
-
-如果想让局域网内其他设备访问，把端口映射改成 `"13000:3000"` —— **但请先在前面加一层认证**（带登录的反向代理、VPN 等），因为 Wetty 本身不校验登录。
 
 ## 许可证
 

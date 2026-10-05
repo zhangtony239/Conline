@@ -32,16 +32,18 @@ Images are built by the [GHCR workflow](.github/workflows/build-ghcr.yml):
 ```yaml
 services:
   cline-cli:
-    image: ghcr.io/zhangtony239/conline:latest
+    image: cline-cli:latest
     container_name: cline-cli
     restart: unless-stopped
     ports:
       - "127.0.0.1:13000:3000"
     volumes:
-      - cline:/workspace
+      - ./workspace:/workspace
+      - cline-data:/root/.cline/data
 
 volumes:
-  cline:
+  cline-data:
+
 ```
 
 ### Build it yourself
@@ -50,16 +52,6 @@ volumes:
 docker build -t cline-cli:latest .
 docker compose up -d
 ```
-
-## Configuration
-
-| Item | Default | Notes |
-| --- | --- | --- |
-| HTTP port | `127.0.0.1:13000` → `3000` | Change the left side of `ports` in [`compose.yaml`](compose.yaml) |
-| Workspace | named volume `cline` mounted at `/workspace` | Your project files live here |
-| Startup command | `cline` | Set by `CMD` in the [`Dockerfile`](Dockerfile) |
-
-To expose the service beyond localhost (e.g. on a LAN), change the port mapping to `"13000:3000"` — **add your own authentication in front of it first** (reverse proxy with auth, VPN, etc.), since Wetty itself does not require a login.
 
 ## License
 

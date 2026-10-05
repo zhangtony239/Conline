@@ -6,7 +6,8 @@ services:
     ports:
       - "127.0.0.1:13000:3000"
     volumes:
-      - cline:/workspace
+      - ./workspace:/workspace
+      - cline-data:/root/.cline/data
 
 volumes:
-  cline:
+  cline-data:
