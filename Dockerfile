@@ -17,6 +17,10 @@ WORKDIR /workspace
 
 ENV PYTHON=/usr/bin/python3
 ENV SHELL=/bin/bash
+# UTF-8 locale: without it tmux's client detection can conclude the
+# terminal is not UTF-8 capable and silently replace non-ASCII glyphs
+# (•, ❯, …) with "_". C.UTF-8 ships with glibc, no locales package needed.
+ENV LANG=C.UTF-8
 
 RUN npm install -g cline wetty@3
 

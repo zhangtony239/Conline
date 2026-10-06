@@ -20,8 +20,12 @@ COMMAND="${CONLINE_TMUX_COMMAND:-cline}"
 
 # Small retry loop: if the session dies between "attach" and "create",
 # recreate it instead of dropping the browser connection.
+#
+# -u forces tmux to write UTF-8 to the outer terminal even if the
+# locale variables are missing/ASCII. Without it tmux may set
+# client_utf8=0 and replace every non-ASCII glyph (•, ❯, …) with "_".
 for _ in 1 2 3; do
-    tmux new-session -A -s "$SESSION" bash -lc "$COMMAND" && exit 0
+    tmux -u new-session -A -s "$SESSION" bash -lc "$COMMAND" && exit 0
     sleep 0.5
 done
 
