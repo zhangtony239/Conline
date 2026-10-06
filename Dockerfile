@@ -18,7 +18,7 @@ WORKDIR /workspace
 ENV PYTHON=/usr/bin/python3
 ENV SHELL=/bin/bash
 
-RUN npm install -g cline wetty
+RUN npm install -g cline wetty@3
 
 # tmux persistence: Cline runs inside a tmux session so it survives
 # browser disconnects and is re-attached automatically on reconnect.
