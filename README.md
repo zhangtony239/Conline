@@ -11,6 +11,7 @@ English | [简体中文](README_zh.md)
 - 🌐 Use Cline from a tablet, Chromebook, or work machine without installing anything
 - 📦 One image, one `docker compose up` — Cline + Wetty preinstalled
 - 💾 Workspace persisted in a named Docker volume
+- 🖥️ Cline runs inside a tmux session: close the browser and the task keeps going; reopen it and you're back where you left off
 - 🔒 Bound to `127.0.0.1` by default — safe for local use out of the box
 
 ## Quick Start
@@ -52,6 +53,31 @@ volumes:
 docker build -t cline-cli:latest .
 docker compose up -d
 ```
+
+## Tasks survive disconnects (tmux persistence)
+
+Cline doesn't run directly in Wetty's PTY — it runs inside a persistent [tmux](https://github.com/tmux/tmux) session (named `conline` by default):
+
+- **Closing the browser doesn't kill the task** — a dropped browser connection only kills the tmux *client*; Cline keeps running inside the container
+- **Automatic restore on return** — reopening <http://127.0.0.1:13000> re-attaches to the same session, with the live task and its full output history intact
+- **Multiple viewers** — several browser tabs/devices can attach to the same session at once (mirrored view)
+- **Take over from a terminal** — you can also skip the browser and attach directly:
+
+  ```bash
+  docker exec -it cline-cli tmux attach -t conline
+  ```
+
+  (Inside tmux, `Ctrl-b` then `d` only detaches — the task keeps running.)
+
+The session name and the command run inside it can be overridden with environment variables:
+
+```yaml
+    environment:
+      - CONLINE_TMUX_SESSION=conline   # tmux session name
+      - CONLINE_TMUX_COMMAND=cline     # command run inside the session
+```
+
+> ⚠️ Scope: persistence covers **browser disconnects/reloads** and Wetty restarts. Running `docker compose down` or restarting the container terminates processes inside the container, including running tasks — the workspace and Cline data stay safe in their volumes.
 
 ## License
 
