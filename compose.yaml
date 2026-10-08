@@ -1,6 +1,6 @@
 services:
   cline-cli:
-    image: cline-cli:latest
+    image: ghcr.io/zhangtony239/conline:latest
     container_name: cline-cli
     restart: unless-stopped
     ports:
